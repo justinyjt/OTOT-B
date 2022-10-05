@@ -14,7 +14,6 @@ export default function DataTable() {
   const [contactList, setContactList] = React.useState([]);
   const getList = () => {
     axiosInstance.get("/api/contacts").then((res) => {
-      console.log("hi", res)
       setContactList(res.data.data);
     });
   };

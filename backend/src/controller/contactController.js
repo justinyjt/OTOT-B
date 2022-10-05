@@ -84,6 +84,6 @@ exports.delete = function (req, res) {
 res.json({
             status: "success",
             message: 'Contact deleted'
-        }).status;
+        }).status(200);
     });
 };

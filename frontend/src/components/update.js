@@ -22,7 +22,7 @@ function Form() {
     console.log(data);
 
     axiosInstance
-      .patch(`api/contacts/${data._id}`, data)
+      .put(`api/contacts/${data._id}`, data)
       .then(() => reset())
       .catch(() => {
         console.log(`unable to update ${data._id} with`, data);

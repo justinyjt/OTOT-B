@@ -46,9 +46,6 @@ export default function BasicSelect() {
       {action === "add" && <AddContactForm />}
       {action === "update" && <UpdateContactForm />}
       {action === "delete" && <DeleteContactForm />}
-      {/* if (action === "add") {<AddContactForm />}
-        if (action === "delete") {<DeleteContactForm />}
-        if (action === "update") {<UpdateContactForm />} */}
     </div>
   );
 }
