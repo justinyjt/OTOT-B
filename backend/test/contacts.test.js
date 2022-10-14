@@ -12,8 +12,8 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  mongoose.disconnect();
-  mongoose.connection.close();
+  await mongoose.disconnect();
+  await mongoose.connection.close();
 })
 
 let validContactId = "";
