@@ -53,4 +53,4 @@ jobs:
           heroku_app_name: "polar-savannah-10068"
           heroku_email: "justinyjt1998@gmail.com"
           branch: "master"
-          buildpacks: "https://github.com/heroku/heroku-buildpack-nodejs.git"
+          buildpack: "https://github.com/heroku/heroku-buildpack-nodejs.git"
