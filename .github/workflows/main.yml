@@ -34,6 +34,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+          cache-dependency-path: backend/package-lock.json
       - name: Create mongoDB Docker container
         run: sudo docker run -d -p 27017:27017 mongo:latest
       - run: cd backend
