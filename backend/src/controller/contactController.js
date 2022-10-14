@@ -1,5 +1,5 @@
 // Import contact model
-Contact = require('../model/contactModel');
+const Contact = require('../model/contactModel');
 // Handle index actions
 exports.index = function (req, res) {
     Contact.get(function (err, contacts) {
@@ -25,16 +25,16 @@ exports.new = function (req, res) {
     contact.phone = req.body.phone;
     if (contact.name && contact.email) {
 
-    
-// save the contact and check for errors
+
+        // save the contact and check for errors
         contact.save(function (err) {
-                // if (err)
-                //     res.json(err);
-        res.json({
-                    message: 'New contact created!',
-                    data: contact
-                }).status(200);
-            });
+            // if (err)
+            //     res.json(err);
+            res.json({
+                message: 'New contact created!',
+                data: contact
+            }).status(200);
+        });
     } else {
         res.status(401).json({
             message: 'Missing name or email!',
@@ -55,15 +55,15 @@ exports.view = function (req, res) {
 };
 // Handle update contact info
 exports.update = function (req, res) {
-console.log(req.params.contact_id);
-Contact.findById(req.params.contact_id, function (err, contact) {
+    console.log(req.params.contact_id);
+    Contact.findById(req.params.contact_id, function (err, contact) {
         if (err)
             res.send(err);
-contact.name = req.body.name ? req.body.name : contact.name;
+        contact.name = req.body.name ? req.body.name : contact.name;
         contact.gender = req.body.gender;
         contact.email = req.body.email;
         contact.phone = req.body.phone;
-// save the contact and check for errors
+        // save the contact and check for errors
         contact.save(function (err) {
             if (err)
                 res.json(err);
@@ -81,7 +81,7 @@ exports.delete = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err);
-res.json({
+        res.json({
             status: "success",
             message: 'Contact deleted'
         }).status(200);

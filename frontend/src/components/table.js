@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect, useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { axiosInstance } from "../utils/axios.utils";
 
@@ -11,14 +11,23 @@ const columns = [
 ];
 
 export default function DataTable() {
-  const [contactList, setContactList] = React.useState([]);
-  const getList = () => {
+  const [contactList, setContactList] = useState([]);
+  const getList = async () => {
     axiosInstance.get("/api/contacts").then((res) => {
       setContactList(res.data.data);
     });
   };
 
-  React.useEffect(() => getList, []);
+  useEffect (() => {
+    axiosInstance.get('https://polar-savannah-10068.herokuapp.com/api/contacts')
+    .then(res =>{
+        console.log(res)
+        setContactList(res.data.data)
+    })
+    .catch(err =>{
+        console.log(err)
+    })
+},[]);
 
   return (
     <div>

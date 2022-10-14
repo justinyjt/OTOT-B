@@ -6,6 +6,8 @@ let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 // Initialise the app
 let app = express();
+const path = require('path');
+
 let dotenv = require('dotenv');
 dotenv.config();
 
@@ -17,6 +19,7 @@ const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://test:5_ye57VzzjTy$j*@c
 
 // Import routes
 let apiRoutes = require("./api-routes");
+const { route } = require('./api-routes');
 // Configure bodyparser to handle post requests
 app.use(bodyParser.urlencoded({
     extended: true
@@ -48,6 +51,11 @@ app.get('/', (req, res) => res.send('Hello World with Express'));
 
 // Use Api routes in the App
 app.use('/api', apiRoutes);
+
+app.get("*", function(req, res) {
+    res.sendFile(path.join(__dirname, "./frontend/build/index.html"))
+})
+
 // Launch app to listen to specified port
 app.listen(port, function () {
     console.log("Running OTOT_B on port " + port);
@@ -62,3 +70,4 @@ app.post('*', (req, res) => {
     res.status(404)
     .send('ERROR 404 PAGE NOT FOUND!');
 });
+
