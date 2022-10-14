@@ -52,5 +52,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "polar-savannah-10068"
           heroku_email: "justinyjt1998@gmail.com"
-          branch: "main"
+          branch: "master"
           buildpacks: "https://github.com/heroku/heroku-buildpack-nodejs.git"
