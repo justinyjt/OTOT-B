@@ -2,7 +2,7 @@ import './App.css';
 import Table from "./components/table"
 import FunctionSelect from "./components/function_select"
 import { useEffect } from 'react';
-
+import ExchangeRate from './components/exchangeRate';
 
 function App() {
     // useEffect(() => getList);
@@ -11,6 +11,7 @@ function App() {
         <h1>Contacts</h1>
         <Table />
         <FunctionSelect />
+        <ExchangeRate />
       </div>
     );
 }

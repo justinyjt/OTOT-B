@@ -13,7 +13,16 @@ dotenv.config();
 
 var cors = require('cors')
 
-app.use(cors()) // Use this after the variable declaration
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
+app.use(cors({
+    origin: "*", // restrict calls to those this address
+    methods: ["GET", "POST", "PUT", "DELETE"],// only allow GET requests
+})) // Use this after the variable declaration
 
 const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://test:5_ye57VzzjTy$j*@cluster0.yfnmagw.mongodb.net/?retryWrites=true&w=majority";
 
@@ -34,6 +43,8 @@ try {
 } catch (error) {
     throw new Error(`Cannot connect to ${MONGO_URI}`)
 }
+
+
 
 var db = mongoose.connection;
 
